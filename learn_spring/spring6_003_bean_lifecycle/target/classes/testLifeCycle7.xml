@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 七步生命周期 -->
+    <!-- 这个Bean中的before和after将作用于当前配置文件中所有的bean -->
+    <!-- 换个配置文件就没用了 -->
+    <bean id="LogBeanPostProcessorBean" class="com.powernode.Seven.LogBeanPostProcessor"></bean>
+
+    <!-- <bean id="userBean" class="com.powernode.Five.User" init-method="initBean" destroy-method="destroyBean">
+        <property name="name" value="zhangsan"></property>
+    </bean> -->
+
+    <bean id="userBean" class="com.powernode.Five.User" init-method="initBean" destroy-method="destroyBean" scope="prototype">
+        <property name="name" value="zhangsan"></property>
+    </bean>
+
+</beans>

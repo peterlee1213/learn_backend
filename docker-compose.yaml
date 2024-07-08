@@ -1,0 +1,19 @@
+services:
+  test-java17-vscode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3100:3100
+      - 3101:3101
+      - 3102:3102
+    networks:
+      - test-network
+    working_dir: /code,
+    volumes:
+      - C:/Users/zheng/Desktop/java17:/code
+      - C:/Users/zheng/.m2:/home/vscode/.m2
+
+networks:
+  test-network:
+    driver: bridge

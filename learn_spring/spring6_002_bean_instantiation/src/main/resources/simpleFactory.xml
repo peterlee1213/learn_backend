@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 通过简单工厂模式,我需要在spring配置文件中告诉spring框架调用哪个类的哪个方法获取bean -->
+    <bean id="tankBean" class="com.powernode.simplefactory.WeaponFactory" factory-method="get"></bean>
+
+
+</beans>

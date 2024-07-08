@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace是当有多个xml文件的时候可以作为前缀以区分不同xml文件下的相同id -->
+<mapper namespace="car">
+    <insert id="insertCar">
+        <!-- #{里面的名称就是map集合或者java类的属性名,必须严格符合} -->
+        insert into t_car (id,car_num,brand,guide_price,produce_time,car_type) values (null,#{car_num},#{brand},#{guide_price},#{produce_time},#{car_type})
+    </insert>
+    <insert id="insertCarPOJO">
+        <!-- 因为私有属性不能被直接访问,所以mybatis是通过get或者set方法来访问属性,比如carNum就是访问getCarNum或者setCarNum -->
+         insert into t_car (id,car_num,brand,guide_price,produce_time,car_type) values (null,#{carNum},#{brand},#{guidePrice},#{produceTime},#{carType})
+    </insert>
+
+    <delete id="deleteOneById">
+        delete from t_car where id = #{id}
+    </delete>
+
+    <update id="updateById">
+        update t_car set car_num=#{carNum},brand=#{brand},guide_price=#{guidePrice},produce_time=#{produceTime},car_type=#{carType} where id = #{id}
+    </update>
+
+    <!-- resultType参数告诉mybatis返回的结果要映射到哪个对象上,查询得到的结果的属性名称必须跟对象名称完全一致 -->
+    <select id="getOneById" resultType="com.powernode.pojo.Car">
+        select id,car_num as carNum,brand as brand,guide_price as guidePrice,produce_time as produceTime,car_type as carType from t_car where id = #{id}
+    </select>
+
+    <select id="getMultipleById" resultType="com.powernode.pojo.Car">
+        select id,car_num as carNum,brand as brand,guide_price as guidePrice,produce_time as produceTime,car_type as carType from t_car
+    </select>
+</mapper>

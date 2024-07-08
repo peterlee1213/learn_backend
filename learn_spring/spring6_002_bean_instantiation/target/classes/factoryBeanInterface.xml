@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 通过具体工厂类实现FactoryBean来实现, -->
+    <!-- 实际上是第三种方式的简化 -->
+    <!-- 无需再手动指定Factory-bean以及factory-method了 -->
+    <bean id="personBean" class="com.powernode.factorybeaninterface.PersonFactory"></bean>
+
+
+</beans>

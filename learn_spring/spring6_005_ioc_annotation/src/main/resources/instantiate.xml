@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 在这个文件中指定要spring扫描哪些包,多个包用逗号隔开,也可用这些共同包的父包 -->
+    <context:component-scan base-package="com.powernode.example" />
+
+    <!-- 选择性实例化,比如只实例化@Controller修饰的class -->
+    <!-- 第一种解决方案:use-default-filters="false"表示这个包下所有带有声明Bean的注解全部失效,然后指定谁生效 -->
+    <context:component-scan base-package="com.powernode.selectiveinstantiate" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <!-- 第二种解决方案:use-default-filters="true"(这是默认值),表示这个包下所有带有声明Bean的注解全部生效,然后指定谁失效 -->
+    <context:component-scan base-package="com.powernode.selectiveinstantiate" use-default-filters="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+</beans>

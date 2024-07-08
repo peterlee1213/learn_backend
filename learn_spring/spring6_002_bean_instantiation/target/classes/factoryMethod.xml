@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 在工厂方法模式中,工厂需要被实例化,然后才能调用其实例方法 -->
+    <bean id="tankFactoryBean" class="com.powernode.factoryBean.TankFactory"></bean>
+    <!-- 告诉spring调用哪个对象(factory-bean)的哪个方法(factory-method)来获取实例 -->
+    <bean id="tankBean" factory-bean="tankFactoryBean" factory-method="get"></bean>
+
+
+</beans>
