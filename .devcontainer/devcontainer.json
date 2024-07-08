@@ -1,0 +1,37 @@
+{
+    "name": "test-java17-vscode",
+    "dockerComposeFile": "../docker-compose.yaml",
+    "features": {
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "none",
+            "installGradle": "false",
+            "installMaven": "true"
+        }
+    },
+    "forwardPorts": [
+        "3100:3100",
+        "3101:3101",
+        "3102:3102"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "shengchen.vscode-checkstyle",
+                "vscjava.vscode-java-debug",
+                "vscjava.vscode-java-pack",
+                "vscjava.vscode-maven",
+                "yangbaopan.vscode-java-ibatisx",
+                "vscjava.vscode-java-dependency",
+                "vmware.vscode-boot-dev-pack",
+                "vmware.vscode-spring-boot",
+                "vscjava.vscode-java-test",
+                "redhat.vscode-xml",
+                "redhat.vscode-yaml"
+            ],
+            "settings": {}
+        }
+    },
+    "workspaceFolder": "/code",
+    "service": "test-java17-vscode",
+    "postStartCommand": "sudo chown vscode:vscode -R /code"
+}
