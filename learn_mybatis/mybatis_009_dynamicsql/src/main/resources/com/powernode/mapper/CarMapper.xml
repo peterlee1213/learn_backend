@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powernode.mapper.CarMapper">
+
+    <select id="selectByIfFilter" resultType="car"> 
+        select * from t_car where 1=1 
+        
+        <!--如果test的值为true, 则会把if标签之内的内容拼接到上面的sql语句中,否则就不会 -->
+        <!-- test属性中可以使用的是: -->
+        <!-- 1. 如果使用了@Param注解,那么test中要出现的是@param注解指定的参数名@Param("brand"), 那么这里就使用brand -->
+        <!-- 2. 若没有使用@Param注解,那么test中要出现的是param1等等 -->
+        <!-- 3. 当使用了POJO,那么test中出现的是POJO类的属性名 -->
+        <!-- 注意: 在mybatis的动态SQL中不能使用&&,只能使用and -->
+        <if test="brand != null and brand != ''"> and brand like "%"#{brand}"%" </if>
+        <if test="guidePrice != null and guidePrice != ''"> and guide_price > #{guidePrice} </if>
+        <if test="carType != null and carType != ''"> and car_type = #{carType} </if>
+    </select>
+
+    <select id="selectByIfFilterWithWhere" resultType="car"> 
+        select * from t_car
+        
+        <!--where标签是负责where子句动态生成的 -->
+        <!-- 如果这些if条件一个都不成立, where关键字都不会生成 -->
+        <!-- where标签可智能地删除多余的and或者or -->
+        <where>
+            <if test="brand != null and brand != ''"> and brand like "%"#{brand}"%" </if>
+            <if test="guidePrice != null and guidePrice != ''"> and guide_price > #{guidePrice} </if>
+            <if test="carType != null and carType != ''"> and car_type = #{carType} </if>
+        </where>
+    </select>
+
+    <select id="selectByIfFilterWithTrim" resultType="car"> 
+        select * from t_car 
+    
+        <!-- 
+            prefix 加前缀
+            suffix 加后缀
+            prefixOverrides 删除前缀
+            suffixOverrides 删除后缀
+        -->
+        <!-- prefix="where"表示在trim标签内部所有内容前面加where -->
+        <!-- suffixOverrides="and|or"表示把trim标签中内容的后缀and|or去掉 -->
+        <trim prefix="where" suffixOverrides="and|or">
+            <if test="brand != null and brand != ''"> brand like "%"#{brand}"%" and </if>
+            <if test="guidePrice != null and guidePrice != ''"> guide_price > #{guidePrice} and </if>
+            <if test="carType != null and carType != ''"> car_type = #{carType} and </if>
+        </trim>
+    </select>
+
+</mapper>

@@ -25,7 +25,7 @@
    1. 比如一个xxxMapper.xml文件中有大量的查询语句,每个select都要写一遍resultType,我可以为这个字符串设置一个别名, 然后在xml标签的属性中引用它
    2. 不区分大小写,具体参照mybatis-config.xml以及CarMapper.xml
    3. namespace不能起别名,只能写全限定接口名
-   4. package标签中包括的所有类全部自动起别名,别名就是类简名,不区分大小写
+   4. package标签中包括的所有类全部自动起别名,别名就是类名首字母小写,不区分大小写
 6. 获取在事务提交之前自动生成的主键值(这个主键值可能在其他要插入的数据中用到,否则就只能先提交事务然后从数据库查询,这破坏了一个service事务完整性)
    1. 具体参照testGetPrimaryKeyBeforeCommitTransaction测试程序以及CarMapper.xml
 

@@ -12,5 +12,9 @@ MYSQL_MAPPING_PORT=33061
 PHPMYADMIN_NAME=test-phpmyadmin
 PHPMYADMIN_MAPPING_PORT=33066
 
+if !(docker network ls | grep "test-network" &> /dev/null); then
+    docker network create test-network
+fi
+
 docker run -d -p ${MYSQL_MAPPING_PORT}:3306 --name ${MYSQL_NAME} -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} --net test-network -v dbdir:/var/lib/mysql ${MYSQL_IMAGE} && \
 docker run -d -p ${PHPMYADMIN_MAPPING_PORT}:80 --name ${PHPMYADMIN_NAME} -e PMA_HOST=${MYSQL_NAME} -e PMA_PORT=3306 -e PMA_USER=${MYSQL_ROOT_USERNAME} -e PMA_PASSWORD=${MYSQL_ROOT_PASSWORD} --net test-network ${PHPMYADMIN_IMAGE}

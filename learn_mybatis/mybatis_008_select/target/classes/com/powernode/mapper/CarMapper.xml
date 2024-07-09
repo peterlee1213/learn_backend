@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powernode.mapper.CarMapper">
+
+    <select id="selectById" resultType="map"> select * from t_car where id = #{id} </select>
+
+
+    <select id="selectAll" resultType="map">select * from t_car</select>
+
+
+    <!-- 专门定义一个结果映射, 在这个结果映射中指定数据库表字段名和Java类的属性名的对应关系 -->
+    <!-- type属性用来指定POJO类的类名,只要配置过typeAlias就直接写类名就行了 -->
+    <!-- id属性指定resultMap的唯一标志,这个id将来要在select标签中使用 -->
+    <resultMap type="car" id="carResultMap">
+        <!-- 如果数据库表中有主键,建议配置一个id标签(instead of result tag),这不是必须的,但官方的解释是可以提高mybatis的执行效率 -->
+        <id property="id" column="id" />
+        <!-- property填写POJO类的属性名 -->
+        <!-- column填写数据库表的字段名 -->
+        <!-- 如果column和property相同则可以省略,id不要省 -->
+        <result column="car_num" property="carNum" />
+        <result column="brand" property="brand" />
+        <result column="guide_price" property="guidePrice" />
+        <result column="produce_time" property="produceTime" />
+        <result column="car_type" property="carType" />
+
+    </resultMap>
+    <!-- resultMap就是上面的resultMap的id -->
+    <select id="selectAllWithResultMap" resultMap="carResultMap">select * from t_car</select>
+
+    <select id="selectMapUnderscoreToCamelCase" resultType="car">select * from t_car</select>
+
+</mapper>
