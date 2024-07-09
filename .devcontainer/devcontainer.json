@@ -30,7 +30,9 @@
                 "redhat.fabric8-analytics",
                 "yzhang.markdown-all-in-one"
             ],
-            "settings": {}
+            "settings": {
+                "files.eol": "\n"
+            }
         }
     },
     "workspaceFolder": "/code",
