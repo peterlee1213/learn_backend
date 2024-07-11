@@ -47,4 +47,68 @@
         </trim>
     </select>
 
+    <update id="updateWithSet">
+        update t_car
+        <set>
+            <if test="carNum != null and carNum != ''">
+                car_num = #{carNum},
+            </if>
+            <if test="brand != null and brand != ''"> brand = #{brand},, </if>
+            <if test="guidePrice != null and guidePrice != ''"> guide_price = #{guidePrice}, </if>
+            <if test="produceTime != null and produceTime != ''"> produce_time = #{produceTime}, </if>
+            <if test="carType != null and carType != ''"> car_type = #{carType}, </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectByChoose" resultType="car">
+        select * from t_car
+        <where>
+            <choose>
+                <when test="brand != null and brand != ''">brand like "%"#{brand}"%"</when>
+                <when test="guidePrice != null and guidePrice != ''">guide_price > #{guidePrice}</when>
+                <otherwise>car_type = #{carType}</otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!-- 使用foreach标签一次删除多条记录 -->
+    <delete id="deleteByIds">
+        delete from t_car where id in (
+        <!-- 
+                foreach标签的属性:
+                    collection: 指定数组或集合
+                    item: 代表数组或集合中的元素
+                    separator: 循环之间的分隔符
+                #{id}中的id是item属性的值
+                最终这个foreach标签会变成将ids这个数组或集合的所有元素逗号分隔的字串
+            -->
+            <foreach collection="ids" item="id" separator=",">#{id}</foreach>
+        )
+    </delete>
+
+    <!-- 使用foreach一次插入多条记录 -->
+     <insert id="insertMultipleCars">
+        insert into t_car values
+        <foreach collection="cars" item="recordItem" separator=",">
+            (null,#{recordItem.carNum},#{recordItem.brand},#{recordItem.guidePrice},#{recordItem.produceTime},#{recordItem.carType})
+        </foreach>
+     </insert>
+
+     <!-- 使用where or + foreach 标签批量删除 -->
+    <delete id="deleteByIdsWithWhereAndForEach">
+        delete from t_car
+        <where>
+            <foreach collection="ids" item="id" separator="or">
+                id = #{id}
+            </foreach>
+        </where>
+    </delete>
+
+    <!-- 使用sql和include标签 -->
+    <sql id="carField">id,car_num,brand</sql>
+    <select id="selectAllWithSqlAndInclude" resultType="map">
+        select <include refid="carField"></include> from t_car
+    </select>
+
 </mapper>

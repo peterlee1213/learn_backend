@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powernode.mapper.CarMapper">
+
+    <cache></cache>
+    <!-- 测试一级缓存 -->
+    <select id="selectById" resultType="car"> select * from t_car where id = #{id} </select>
+
+    <!-- 测试二级缓存 -->
+    <select id="selectById2"
+        resultType="car"> select * from t_car where id = #{id}</select>
+</mapper>
