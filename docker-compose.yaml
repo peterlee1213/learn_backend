@@ -11,8 +11,8 @@ services:
       - test-network
     working_dir: /code,
     volumes:
-      - C:/Users/zheng/Desktop/java17:/code
-      - C:/Users/zheng/.m2:/home/vscode/.m2
+      - /home/zheng/java17:/code
+      - /home/zheng/.m2:/home/vscode/.m2
 
 networks:
   test-network:
