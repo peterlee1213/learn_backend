@@ -27,7 +27,6 @@
             <id property="sid" column="sid" />
             <result property="sname" column="sname" />
             <result property="cid" column="cid" />
-
         </collection>
     </resultMap>
     <select id="selectClazzByIdStep1" resultMap="clazzResultMapStep"> select * from clazz where cid

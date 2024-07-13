@@ -11,8 +11,12 @@ services:
       - test-network
     working_dir: /code,
     volumes:
+      # 代码库
       - /home/zheng/java17:/code
-      - /home/zheng/.m2:/home/vscode/.m2
+      # 共享m2仓库，不用每次开启container都要重新下载
+      - /home/zheng/.m2:/root/.m2
+      # 共享git credentials
+      - /home/zheng/.ssh:/root/.ssh
 
 networks:
   test-network:

@@ -21,7 +21,7 @@
     <select id="selectByNameAndSex" resultType="student"> select * from t_student where name like
         '%${arg0}%' and sex = #{arg1} </select>
 
-    <!-- 以下根据名称和性别查询,传多个参数, 使用@Param注解 -->
+    <!-- 以下根据名称和性别查询,传多个参数, 使用@Param注解,这时候param1,param2.....这种方式还是可以使用的 -->
     <select id="selectByNameAndSex2" resultType="student"> select * from t_student where name like
         '%${name}%' and sex = #{sex} </select>
 </mapper>
