@@ -4,7 +4,7 @@
 2. open this project in git bash
 3. run `bash install-mysql-phpmyadmin.sh`
 4. open this project in vscode
-5. go to `docker-compose.xml`, find the `volumes` config section, replace the `C:/Users/zheng/Desktop/java17` with the project directory on your computer, and replace the `C:/Users/zheng/.m2` directory with the `m2` directory on your computer
+5. go to `docker-compose.xml`, find the `volumes` config section, replace the corresponding directory with your local directory
 6. press `F1` and click `Reopen in container`, the vscode will automatically create the container and connect you to the codebase
 
 ## how to connect to database 

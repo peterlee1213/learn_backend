@@ -1,5 +1,5 @@
 services:
-  test-java17-vscode:
+  test-java17:
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,11 +11,11 @@ services:
       - test-network
     working_dir: /code,
     volumes:
-      # 代码库
+      # codebase
       - /home/zheng/java17:/code
-      # 共享m2仓库，不用每次开启container都要重新下载
+      # m2 repository, so that you don't have to download the dependencies everytime you open the container
       - /home/zheng/.m2:/root/.m2
-      # 共享git credentials
+      # share git credentials
       - /home/zheng/.ssh:/root/.ssh
 
 networks:
