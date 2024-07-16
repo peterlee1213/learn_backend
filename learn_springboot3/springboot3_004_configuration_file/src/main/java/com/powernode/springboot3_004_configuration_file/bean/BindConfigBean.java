@@ -1,5 +1,11 @@
 package com.powernode.springboot3_004_configuration_file.bean;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+// 这个配置表示读取application.properties中所有mywebapp.xxxx的值并赋值给此类中对应的属性
+@ConfigurationProperties(prefix = "mywebapp")
+@Component("configBean")
 public class BindConfigBean {
     private String name;
     private Integer age;

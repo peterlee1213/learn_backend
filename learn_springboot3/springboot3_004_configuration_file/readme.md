@@ -27,3 +27,23 @@ profile推荐为`dev` `test` `prod` `feature`, 其中feature表示特性
 ---
 
 我们可以创建一个Bean一键绑定特定前缀的配置项
+具体参照TestController.java中的testConfigToBean方法
+
+---
+
+在Bean类上加上`@ConfigurationProperties`注解，以及在主程序类上加`@ConfigurationPropertiesScan(basePackages = {“com.powernode........”})`可实现自动将application.properties中的配置注入到Bean类的属性上
+
+---
+
+如果是第三方class我无法修改源代码，我可以通过创建一个方法，在方法上标注`@Bean`以及`@ConfigurationProperties(prefix = "mywebapp")`来实现
+
+---
+
+如何将配置项绑定到 数组/List/Map，参照TestController.java中的testMapArrayList
+
+---
+
+指定原配置文件（非application.properties）,从指定配置文件里面拿出数据放到类中
+参照TestController.java中的testSpecifyPropertiesFiles
+
+

@@ -1,11 +1,17 @@
 package com.powernode.springboot3_004_configuration_file.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.powernode.springboot3_004_configuration_file.bean.BindConfigBean;
+import com.powernode.springboot3_004_configuration_file.mapListArray.CollectionConfig;
+import com.powernode.springboot3_004_configuration_file.specifyPropertiesFile.Group;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
@@ -60,6 +66,43 @@ public class TestController {
     @GetMapping("testMultiEnv")
     public String testMultiEnv(@Value("${myapp.memo}") String memo) {
         return memo;
+    }
+
+    /**
+     * c测试将application.properties中特定前缀的配置项通过注解直接赋值给一个Bean
+     */
+    @Autowired
+    @Qualifier("configBean")
+    private BindConfigBean bindConfigBean;
+
+    @GetMapping("testConfigToBean")
+    public String testConfigToBean() {
+        return this.bindConfigBean.toString();
+    }
+
+    /**
+     * 测试将Map/数组/List类型的配置项保存到配置文件中
+     */
+
+    @Autowired
+    @Qualifier("collectionConfig")
+    private CollectionConfig collectionConfig;
+
+    @GetMapping("testMapArrayList")
+    public String testMapArrayList() {
+        return this.collectionConfig.toString();
+    }
+
+    /**
+     * 测试指定除application.properties之外的properties文件中的变量注入一个对象
+     */
+    @Autowired
+    @Qualifier("group")
+    private Group group;
+
+    @GetMapping("testSpecifyPropertiesFiles")
+    public String testSpecifyPropertiesFiles() {
+        return group.toString();
     }
 
 }

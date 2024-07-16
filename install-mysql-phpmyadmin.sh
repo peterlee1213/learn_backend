@@ -12,6 +12,7 @@ MYSQL_MAPPING_PORT=33061
 PHPMYADMIN_NAME=test-phpmyadmin
 PHPMYADMIN_MAPPING_PORT=33066
 
+# test-network is the network for all the test projects
 if !(docker network ls | grep "test-network" &> /dev/null); then
     docker network create test-network
 fi
