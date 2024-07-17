@@ -28,7 +28,10 @@
                 "redhat.vscode-xml",
                 "redhat.vscode-yaml",
                 "redhat.fabric8-analytics",
-                "yzhang.markdown-all-in-one"
+                "yzhang.markdown-all-in-one",
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-mysql",
+                "inferrinizzard.prettier-sql-vscode"
             ],
             "settings": {
                 "java.server.launchMode": "Standard"
