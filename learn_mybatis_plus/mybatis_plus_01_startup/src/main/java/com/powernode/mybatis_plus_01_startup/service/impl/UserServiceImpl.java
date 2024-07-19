@@ -1,5 +1,6 @@
 package com.powernode.mybatis_plus_01_startup.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import com.powernode.mybatis_plus_01_startup.domain.User;
 import com.powernode.mybatis_plus_01_startup.mapper.UserMapper;
 import com.powernode.mybatis_plus_01_startup.service.UserService;
 
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
 
     /**
