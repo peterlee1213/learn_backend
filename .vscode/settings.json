@@ -17,5 +17,6 @@
             "database": "learn_springboot3",
             "username": "root"
         }
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

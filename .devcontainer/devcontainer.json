@@ -34,7 +34,8 @@
                 "inferrinizzard.prettier-sql-vscode"
             ],
             "settings": {
-                "java.server.launchMode": "Standard"
+                "java.server.launchMode": "Standard",
+                "workbench.editor.wrapTabs": true
             }
         }
     },
