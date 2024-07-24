@@ -7,7 +7,6 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class HelloController {
@@ -18,7 +17,9 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return new String("hello world from springboot 3" + this.date);
+        Date date = new Date();
+        System.out.println("one request at " + date);
+        return new String("hello world from springboot 3" + date);
     }
 
 }
