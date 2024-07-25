@@ -1,0 +1,1 @@
+https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html
