@@ -6,15 +6,21 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.jpa_05_jpa_query_methods.domain.Employees;
 import com.spring.jpa_05_jpa_query_methods.repositories.QueryRepository;
 
 @SpringBootTest
 public class QueryRepositoryTest {
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Autowired
     private QueryRepository qr;
@@ -59,5 +65,73 @@ public class QueryRepositoryTest {
             System.out.println(item);
         });
         System.out.println(pages);
+    }
+
+    /**
+     * 测试手写JPQL中添加sort
+     */
+    @Test
+    public void testFindAllAndSort() {
+        List<Employees> list = qr.findAllAndSort(Sort.by("empNo").descending());
+        System.out.println(list);
+    }
+
+    /**
+     * 测试Named Parameters,使用具体名称而非?1来代替变量
+     */
+    @Test
+    public void testNamedParameters() {
+        List<Employees> list = qr.findByLastNameTestNamedParameter("r");
+        System.out.println(list);
+    }
+
+    /**
+     * 测试#{#entityName}
+     */
+    @Test
+    public void testEntityName() {
+        List<Employees> list = qr.findAllTestEntityName();
+        System.out.println(list);
+    }
+
+    /**
+     * 测试没有escape方法的时候传进的字符串含有%或者_
+     * 结果百分号被解析为数据库通配符了
+     */
+    @Test
+    public void testGetStringWithoutEscape() {
+        List<Employees> list = qr.findByLastNameTestWithoutEscape("%r%");
+        System.out.println(list);
+    }
+
+    /**
+     * 测试有escape方法的时候传进的字符串含有%或者_
+     * 这些字符不会被解析为通配符
+     */
+    @Test
+    public void testGetStringWithEscape() {
+        List<Employees> list = qr.findByLastNameTestWithEscape("%r%");
+        System.out.println(list);
+    }
+
+    /**
+     * 测试更新语句
+     */
+    @Test
+    @Transactional
+    public void testUpdateFirstNameById() {
+        // try {
+        // int result = qr.updateFirstNameById("Mogan", 1);
+        // qr.flush();
+        // System.out.println(result);
+        // System.out.println(qr.findById(1));
+        // } catch (Exception e) {
+        // e.printStackTrace();
+        // }
+
+        QueryRepository bean = applicationContext.getBean(QueryRepository.class);
+        int result = bean.updateFirstNameById("Mogan", 1);
+        System.out.println(result);
+        System.out.println(qr.findById(1));
     }
 }
