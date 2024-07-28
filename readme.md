@@ -18,3 +18,12 @@ host: localhost:33061
 username: root
 password: root
 ```
+
+# 常用依赖
+
++ lombok
++ spring web
++ spring data jpa
++ springgboot devtools
++ mysql driver
++ spring security
