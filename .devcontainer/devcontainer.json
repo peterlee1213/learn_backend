@@ -35,6 +35,9 @@
             ],
             "settings": {
                 "java.server.launchMode": "Standard",
+                "workbench.editor.wrapTabs": true,
+                "terminal.integrated.fontWeight": "900",
+                "terminal.integrated.fontWeightBold": "900",
                 "workbench.editor.wrapTabs": true
             }
         }
