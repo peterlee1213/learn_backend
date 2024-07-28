@@ -1,3 +1,3 @@
 https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
 
-https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html#jpa.query-methods.sorting
+具体实例去test或者controller中看

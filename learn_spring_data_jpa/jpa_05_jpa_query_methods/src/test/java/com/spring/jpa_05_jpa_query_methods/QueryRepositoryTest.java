@@ -120,6 +120,7 @@ public class QueryRepositoryTest {
     @Test
     @Transactional
     public void testUpdateFirstNameById() {
+        // this is the first method
         // try {
         // int result = qr.updateFirstNameById("Mogan", 1);
         // qr.flush();
@@ -129,9 +130,21 @@ public class QueryRepositoryTest {
         // e.printStackTrace();
         // }
 
+        // this is the second method
         QueryRepository bean = applicationContext.getBean(QueryRepository.class);
         int result = bean.updateFirstNameById("Mogan", 1);
         System.out.println(result);
         System.out.println(qr.findById(1));
     }
+
+    /**
+     * 测试queryHints
+     */
+    // @Test
+    // public void testQueryHints() {
+    // Page<Employees> list = qr.findByLastName("wolowitz", PageRequest.of(0, 2));
+    // list.forEach(item -> {
+    // System.out.println(item);
+    // });
+    // }
 }

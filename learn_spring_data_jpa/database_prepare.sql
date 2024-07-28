@@ -66,3 +66,22 @@ values
     (6,3),
     (7,1),
     (8,2);
+
+DROP TABLE IF EXISTS salaries;
+CREATE TABLE salaries (
+    emp_no      INT         NOT NULL,
+    salary      INT         NOT NULL,
+    PRIMARY KEY (emp_no),
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no) on DELETE CASCADE
+);
+INSERT INTO salaries
+    (emp_no, salary)
+values
+    (1,1000),
+    (2,2000),
+    (3,3000),
+    (4,4000),
+    (5,5000),
+    (6,6000),
+    (7,7000),
+    (8,8000);

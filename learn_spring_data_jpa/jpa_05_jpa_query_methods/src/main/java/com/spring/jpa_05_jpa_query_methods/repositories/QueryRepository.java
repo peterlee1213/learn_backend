@@ -9,9 +9,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.query.Param;
 
 import com.spring.jpa_05_jpa_query_methods.domain.Employees;
+
+import jakarta.persistence.QueryHint;
 
 public interface QueryRepository extends JpaRepository<Employees, Integer> {
 
@@ -55,4 +58,18 @@ public interface QueryRepository extends JpaRepository<Employees, Integer> {
     @Modifying
     @Query("update Employees e set e.firstName = :firstName where empNo = :empNo")
     int updateFirstNameById(@Param("firstName") String firstName, @Param("empNo") Integer empNo);
+
+    // 删除
+    // 1. derive SQL from method name
+    void deleteByEmpNo(Integer empNo);
+
+    // 2. 手动写JPQL语句
+    @Modifying
+    @Query("delete from Employees e where e.empNo = :empNo")
+    void deleteByEmpNoWithQuery(Integer empNo);
+
+    // @QueryHints(value = { @QueryHint(name = "name", value = "value") },
+    // forCounting = false)
+    // Page<Employees> findByLastName(String lastName, Pageable pageable);
+
 }

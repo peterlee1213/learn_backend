@@ -1,4 +1,4 @@
-package com.spring.jpa_05_jpa_query_methods.domain;
+package com.spring.jpa_07_specifications.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -8,14 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "dept_emp")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class DeptEmp {
+
     private Employees employee;
     private Departments department;
 }
