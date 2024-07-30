@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Springboot3008WebApplication {
 
 	public static void main(String[] args) {
+		System.out.println("hello");
 		SpringApplication.run(Springboot3008WebApplication.class, args);
 	}
 
