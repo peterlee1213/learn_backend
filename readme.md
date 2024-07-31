@@ -27,3 +27,4 @@ password: root
 + springgboot devtools
 + mysql driver
 + spring security
++ mybatis

@@ -122,7 +122,7 @@ public class QueryRepositoryTest {
     public void testUpdateFirstNameById() {
         // this is the first method
         // try {
-        // int result = qr.updateFirstNameById("Mogan", 1);
+        // int result = qr.updateFirstNameById("abc", 1);
         // qr.flush();
         // System.out.println(result);
         // System.out.println(qr.findById(1));
@@ -131,8 +131,10 @@ public class QueryRepositoryTest {
         // }
 
         // this is the second method
+        // 在测试程序中得这么写事务没用，但是在一般的controller中可直接通过注入拿到bean然后加@Transactional是没问题的
+        // 具体查看QueryMethodController
         QueryRepository bean = applicationContext.getBean(QueryRepository.class);
-        int result = bean.updateFirstNameById("Mogan", 1);
+        int result = bean.updateFirstNameById("abc", 1);
         System.out.println(result);
         System.out.println(qr.findById(1));
     }

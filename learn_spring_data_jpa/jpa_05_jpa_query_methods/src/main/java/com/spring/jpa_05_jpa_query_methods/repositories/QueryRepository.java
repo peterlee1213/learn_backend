@@ -54,7 +54,7 @@ public interface QueryRepository extends JpaRepository<Employees, Integer> {
     @Query("select e from #{#entityName} e where e.lastName like ?#{escape([0])} escape ?#{escapeCharacter()}")
     List<Employees> findByLastNameTestWithEscape(@Param("lastName") String lastName);
 
-    // 所有update语句都要在@Query上加@Modifying注解
+    // 所有@Query增删改语句都要在@Query上加@Modifying注解
     @Modifying
     @Query("update Employees e set e.firstName = :firstName where empNo = :empNo")
     int updateFirstNameById(@Param("firstName") String firstName, @Param("empNo") Integer empNo);

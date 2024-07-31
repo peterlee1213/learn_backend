@@ -32,6 +32,10 @@ public class MySecurityUserConfig {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(user1);
         manager.createUser(user2);
+
+        System.out.println(passwordEncoder().encode(
+                "123456"));
+
         return manager;
     }
 

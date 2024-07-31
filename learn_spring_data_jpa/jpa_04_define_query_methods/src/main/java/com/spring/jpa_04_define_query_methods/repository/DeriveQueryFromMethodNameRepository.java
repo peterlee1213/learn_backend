@@ -18,4 +18,8 @@ public interface DeriveQueryFromMethodNameRepository extends CrudRepository<Empl
     // 可分页
     List<Employees> findAll(Pageable pageable);
 
+    // 删除
+    // 此例子在controller中
+    int deleteByEmpNo(Integer empNo);
+
 }

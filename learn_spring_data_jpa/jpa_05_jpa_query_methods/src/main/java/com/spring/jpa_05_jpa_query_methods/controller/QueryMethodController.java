@@ -23,8 +23,7 @@ public class QueryMethodController {
     @GetMapping("testUpdate")
     @Transactional
     public void getMethodName() {
-        int result = qr.updateFirstNameById("Mogan", 1);
-        qr.flush();
+        int result = qr.updateFirstNameById("ghiaaa", 1);
         System.out.println(result);
         System.out.println(qr.findById(1));
     }
