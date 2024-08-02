@@ -20,8 +20,7 @@ public class LoginController {
      * @return
      */
     @GetMapping("/login")
-    public String getMethodName(@RequestParam String param) {
+    public String getMethodName() {
         return "login";
-
     }
 }

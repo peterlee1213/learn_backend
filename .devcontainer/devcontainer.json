@@ -31,7 +31,11 @@
                 "yzhang.markdown-all-in-one",
                 "mtxr.sqltools",
                 "mtxr.sqltools-driver-mysql",
-                "inferrinizzard.prettier-sql-vscode"
+                "inferrinizzard.prettier-sql-vscode",
+                "dsznajder.es7-react-js-snippets",
+                "PulkitGangwar.nextjs-snippets",
+                "ms-vscode.vscode-typescript-next",
+                "bradlc.vscode-tailwindcss"
             ],
             "settings": {
                 "java.server.launchMode": "Standard",
