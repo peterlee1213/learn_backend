@@ -19,7 +19,7 @@ username: root
 password: root
 ```
 
-# 常用依赖
+# common dependencies
 
 + lombok
 + spring web
@@ -28,3 +28,21 @@ password: root
 + mysql driver
 + spring security
 + mybatis
+
+```xml
+<!-- swagger -->
+<dependency>
+    <groupId>com.github.xiaoymin</groupId>
+    <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+    <version>4.1.0</version>
+</dependency>
+```
+
+```xml
+<!-- fastjson2 to better deal with json -->
+<dependency>
+    <groupId>com.alibaba.fastjson2</groupId>
+    <artifactId>fastjson2</artifactId>
+    <version>2.0.37</version>
+</dependency>
+```

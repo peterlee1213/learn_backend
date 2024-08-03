@@ -29,9 +29,16 @@ public class WebSecurityConfig {
                         .authenticated())
                 // 自动使用表单授权，没有这个选项的话会返回401以及一个www-authentication头部以及Basic的值，这两个结合起来会让浏览器弹出一个输入用户名和密码的弹窗，而非一个UI登陆页面
                 // 登陆页面登陆流程，登出页登出流程都是下面这个选项提供的
+                // .formLogin(form -> {
+                // // permitAll表示无需授权即可访问当前页面，否则一旦访问需要授权的login页面会立刻重新重定向到login页面，会出现重定向次数太多的错误
+                // form.loginPage("/login").permitAll(true);
+                // });
                 .formLogin(form -> {
-                    // permitAll表示无需授权即可访问当前页面，否则一旦访问需要授权的login页面会立刻重新重定向到login页面，会出现重定向次数太多的错误
-                    form.loginPage("/login").permitAll();
+                    form.loginPage("/login")
+                            .usernameParameter("myuserrname") // 自定义表单用户名参数，默认值是ussername
+                            .passwordParameter("mypassword") // 自定义表单密码参数，默认值是password
+                            .failureUrl("/login?failure") // 校验失败的时候跳转的地址，默认是/login?error
+                            .permitAll();
                 });
         // 使用基本授权方式(只有这个选项而没有formLogin的话会使用一个alert弹窗让用户输入帐号密码)
         // .httpBasic(withDefaults());
