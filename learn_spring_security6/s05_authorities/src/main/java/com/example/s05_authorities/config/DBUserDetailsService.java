@@ -58,8 +58,15 @@ public class DBUserDetailsService implements UserDetailsManager, UserDetailsPass
         if (userItem == null)
             throw new UsernameNotFoundException(username);
         else
-            return User.builder().username(userItem.getUsername()).password(userItem.getPassword())
-                    .disabled(!userItem.getEnabled()).build();
+            return User.builder()
+                    .username(userItem.getUsername())
+                    .password(userItem.getPassword())
+                    .disabled(!userItem.getEnabled())
+                    // 对用户赋予“ADMIN_LIST”权限，注释掉的话就没有用户能访问/admin/list了
+                    // .authorities("ADMIN_LIST")
+                    // 下面这句话为用户分配角色
+                    .roles("ADMIN")
+                    .build();
     }
 
     @Override

@@ -1,0 +1,1 @@
+[oauth2.0的四种授权方式 - 阮一峰](https://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)

@@ -1,0 +1,36 @@
+本章主要关心的是多表联查,所有测试都在controller中
+
+# 一对一映射
+
+主要通过`@OneToOne`和`@JoinColumn`注解来实现
+一对一单向映射可以在单个Entity中维护上面两个注解，也可以在两个表都维护
+具体查看OneWayOneToOneController
+
+最好不要设置双向映射
+比如customer表中有account_id通过外键约束指向account表的主键，account表中有customer_id通过外键约束指向customer表的主键
+这种情况下要插入就得按照比如说下面的步骤：
+1. 一条记录插入customer表，先设置account_id为null
+2. 一条记录插入account表
+3. 更新customer表中的account_id
+删除也要先设置一个表的外键约束为null,然后才分步骤删除
+所以一对一映射中我们一般会放弃其中一个表的外键约束
+
+而改用在有外键约束的Entity的外键字段的@OneToOne中加一个`mappedBy = "xxx"`,这个xxx是没有外键约束的Entity的字段名称
+
+# 一对多
+
+比如一个class对应多个学生，一个学生只能有一个class
+把关联关系维护在一的这边就是一对多
+把关联关系维护在多的这边就是多对一
+上述例子中把关联关系维护在class这边就是一对多，把关联关系维护在student这边就是多对一
+
+用到的内容跟一对一差不多，一对一都搞明白了一对多或者多对一也差不多了
+主要将一对一的实例看明白，然后再看一对多或多对一
+
+# 多对多
+
+
+
+
+
+

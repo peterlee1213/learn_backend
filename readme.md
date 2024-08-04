@@ -46,3 +46,12 @@ password: root
     <version>2.0.37</version>
 </dependency>
 ```
+
+```xml
+<!-- querydsl -->
+<dependency>
+    <groupId>com.querydsl</groupId>
+    <artifactId>querydsl-jpa</artifactId>
+    <version>4.4.0</version>
+</dependency>
+```

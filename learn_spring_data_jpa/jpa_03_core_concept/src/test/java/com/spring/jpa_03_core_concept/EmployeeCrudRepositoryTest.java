@@ -6,6 +6,7 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 
 import com.spring.jpa_03_core_concept.domain.Employees;
 import com.spring.jpa_03_core_concept.enumclass.Gender;
@@ -27,11 +28,18 @@ public class EmployeeCrudRepositoryTest {
      * @throws ParseException
      */
     @Test
+    @Transactional
     public void testSave() throws ParseException {
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date birthDate = sdf.parse("2000-01-01");
         Date hireDate = sdf.parse("2023-01-01");
-        Employees employees = new Employees(null, birthDate, "Joe", "Biden", Gender.M, hireDate);
+        Employees employees = new Employees(
+                null,
+                birthDate,
+                "Joe",
+                "Biden",
+                Gender.M,
+                hireDate);
         ecr.save(employees);
     }
 
