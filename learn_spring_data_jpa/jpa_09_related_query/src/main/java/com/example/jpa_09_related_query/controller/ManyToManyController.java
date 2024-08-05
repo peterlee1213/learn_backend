@@ -126,12 +126,22 @@ public class ManyToManyController {
 
     /**
      * 查询用户及其对应的角色
+     * 
+     * 会出现循环递归查找的问题，无限递归循环下去，
      */
     @GetMapping("manytomanyquery1")
     @Transactional(readOnly = true)
     public Optional<User> query1() {
         return userRepository.findItemById(2L);
 
+    }
+
+    /**
+     * 删除用户会删除tb_user_role中对应的角色信息
+     */
+    @GetMapping("manytomanydelete")
+    public void delete() {
+        userRepository.deleteById(6L);
     }
 
 }

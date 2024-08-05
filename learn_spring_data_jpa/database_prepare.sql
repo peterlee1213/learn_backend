@@ -214,6 +214,17 @@ INSERT INTO `tb_user_role`(user_id,role_id) VALUES
 (3,1),
 (4,2);
 
-
-
 --  many to many example tables setup end -----------------------------------------
+
+-- test optimistic lock start --------------------------------------------
+DROP TABLE IF EXISTS `tb_optimistic_lock_table`;
+CREATE TABLE `tb_optimistic_lock_table`(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    balance INT DEFAULT 0,
+    version BIGINT DEFAULT 0
+);
+INSERT INTO tb_optimistic_lock_table(balance) values
+(1000),
+(2000);
+
+-- test optimistic lock end --------------------------------------------
