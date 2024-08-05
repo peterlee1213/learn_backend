@@ -11,6 +11,7 @@ import com.example.jpa_09_related_query.repositories.UserRepository;
 import jakarta.annotation.Resource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -130,6 +131,7 @@ public class ManyToManyController {
     @Transactional(readOnly = true)
     public Optional<User> query1() {
         return userRepository.findItemById(2L);
+
     }
 
 }
