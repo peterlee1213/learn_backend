@@ -28,6 +28,7 @@ password: root
 + mysql driver
 + spring security
 + mybatis
++ validation 数据校验的依赖
 
 ```xml
 <!-- swagger -->
@@ -53,5 +54,14 @@ password: root
     <groupId>com.querydsl</groupId>
     <artifactId>querydsl-jpa</artifactId>
     <version>4.4.0</version>
+</dependency>
+```
+
+```xml
+<!-- jwt -->
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt</artifactId>
+    <version>0.9.0</version>
 </dependency>
 ```
