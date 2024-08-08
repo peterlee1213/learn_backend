@@ -19,7 +19,7 @@ username: root
 password: root
 ```
 
-# common dependencies
+# common dependencies summary
 
 + lombok
 + spring web
