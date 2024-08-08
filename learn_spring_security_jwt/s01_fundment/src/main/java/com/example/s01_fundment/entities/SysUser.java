@@ -27,7 +27,7 @@ public class SysUser {
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "nickname")
+    @Column(name = "nick_name")
     private String nickName;
 
     @Column(name = "password")

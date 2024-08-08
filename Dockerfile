@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/java:17
 
+# install node manually, fxxk Chinese great firewall
 RUN mkdir /node 
 RUN apt-get update && apt-get install -y wget
 RUN wget https://npmmirror.com/mirrors/node/v20.16.0/node-v20.16.0-linux-x64.tar.xz
