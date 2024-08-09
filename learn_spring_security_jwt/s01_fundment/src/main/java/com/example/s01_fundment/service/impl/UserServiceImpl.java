@@ -1,13 +1,21 @@
 package com.example.s01_fundment.service.impl;
 
+import java.util.Objects;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson2.JSON;
 import com.example.s01_fundment.entities.SysUser;
+import com.example.s01_fundment.entities.vo.LoginUser;
 import com.example.s01_fundment.service.UserService;
+import com.example.s01_fundment.utils.JwtUtil;
 
 import jakarta.annotation.Resource;
 
@@ -20,21 +28,28 @@ public class UserServiceImpl implements UserService {
     @Resource
     private PasswordEncoder passwordEncoder;
 
+    @Resource
+    private AuthenticationManager authenticationManager;
+
     @Override
     public String login(SysUser sysUser) {
 
-        String userName = sysUser.getUserName();
-        try {
-            // 1.获取数据库中用户信息向你学习
-            UserDetails userByUsername = userDetailsService.loadUserByUsername(userName);
-            // 2.对比密码
-
-            // 3.相同则登陆成功并申请jwt并返回
-            // 4.失败则返回null
-        } catch (UsernameNotFoundException e) {
-            return null;
+        // 1. 封装Authentication对象
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                sysUser.getUserName(), sysUser.getPassword());
+        // 2. 进行校验
+        Authentication authenticate = authenticationManager.authenticate(authentication);
+        // 3. 如果authenticate为空，则校验失败
+        if (Objects.isNull(authenticate)) {
+            throw new RuntimeException("登陆失败");
         }
-
+        // 放入用户信息
+        LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
+        // 生成jwt,使用fastjson的方法，把对象转换为字符串
+        String loginUserString = JSON.toJSONString(loginUser);
+        // 调用JWT工具类，生成jwt令牌
+        String jwt = JwtUtil.createJWT(loginUserString, null);
+        return jwt;
     }
 
 }
