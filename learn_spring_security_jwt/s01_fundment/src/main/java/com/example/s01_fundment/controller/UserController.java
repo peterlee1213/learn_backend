@@ -29,6 +29,11 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    /**
+     * 权限的操作：只要拿上jwt，就可以访问，暂时不需要赋权
+     * 
+     * @return
+     */
     @GetMapping("/info")
     public Authentication getInfo() {
         SecurityContext context = SecurityContextHolder.getContext();

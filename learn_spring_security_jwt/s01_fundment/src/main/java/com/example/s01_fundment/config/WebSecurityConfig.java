@@ -9,11 +9,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.example.s01_fundment.filter.JwtAuthenticationTokenFilter;
+
+import jakarta.annotation.Resource;
 
 @Configuration
 public class WebSecurityConfig {
 
-    // private JwtAuthenticationFilter
+    // 自定义的用于认证的过滤器，进行jwt的校验操作
+    @Resource
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
     /**
      * AuthenticationManager接口有一个authenticate方法，这个方法负责对用户登陆进行认证操作
@@ -38,8 +45,9 @@ public class WebSecurityConfig {
             authorize.requestMatchers("/user/login").permitAll() // /user/login直接允许无需认证
                     .anyRequest().authenticated(); // 其他所有url都需要认证
         });
-        // 把token校验过滤器添加到过滤器链中
-        // http.addFilterBefore(null, null)
+        // 配置过滤器的执行顺序
+        // 将我自定义的过滤器放在UsernamePasswordAuthenticationFilter之前，即最开始，我自定义的过滤器优先级最高
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

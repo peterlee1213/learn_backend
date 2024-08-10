@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             SysUser sysUser = userItem.get();
 
             // 临时定义一个权限
-            Collection<GrantedAuthority> set = new HashSet<GrantedAuthority>();
+            HashSet<GrantedAuthority> set = new HashSet<GrantedAuthority>();
             set.add(new GrantedAuthority() {
                 @Override
                 public String getAuthority() {
