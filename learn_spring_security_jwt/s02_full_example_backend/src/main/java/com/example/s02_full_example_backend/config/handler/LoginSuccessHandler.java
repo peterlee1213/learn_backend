@@ -19,8 +19,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
         R r = R.ok();
-        r.data("token", JwtUtil.createJWT(authentication, "hello", null));
-        String json = JSON.toJSONString();
+        String json = JSON.toJSONString(authentication);
+        r.data("token", JwtUtil.createJWT(json, 3600000L));
     }
 
 }
