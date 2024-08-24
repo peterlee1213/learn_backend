@@ -29,6 +29,8 @@ password: root
 + spring security
 + mybatis
 + validation 数据校验的依赖
++ oauth2 Resource Server    //此依赖已经包含了spring security
++ spring configuration processor
 
 ```xml
 <!-- swagger -->
