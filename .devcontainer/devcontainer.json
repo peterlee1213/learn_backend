@@ -1,57 +1,56 @@
 {
-    "name": "test-java17",
-    "dockerComposeFile": "../docker-compose.yaml",
-    "features": {
-        "ghcr.io/devcontainers/features/java:1": {
-            "version": "none",
-            "installGradle": "false",
-            "installMaven": "true"
-        }
-    },
-    "forwardPorts": [
-        "3100:3100",
-        "3101:3101",
-        "3102:3102"
-    ],
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "shengchen.vscode-checkstyle",
-                "vscjava.vscode-java-debug",
-                "vscjava.vscode-java-pack",
-                "vscjava.vscode-maven",
-                "yangbaopan.vscode-java-ibatisx",
-                "vscjava.vscode-java-dependency",
-                "vmware.vscode-boot-dev-pack",
-                "vmware.vscode-spring-boot",
-                "vscjava.vscode-java-test",
-                "redhat.vscode-xml",
-                "redhat.vscode-yaml",
-                "redhat.fabric8-analytics",
-                "yzhang.markdown-all-in-one",
-                "mtxr.sqltools",
-                "mtxr.sqltools-driver-mysql",
-                "inferrinizzard.prettier-sql-vscode",
-                "dsznajder.es7-react-js-snippets",
-                "PulkitGangwar.nextjs-snippets",
-                "ms-vscode.vscode-typescript-next",
-                "bradlc.vscode-tailwindcss"
-            ],
-            "settings": {
-                "java.server.launchMode": "Standard",
-                "workbench.editor.wrapTabs": true,
-                "terminal.integrated.fontWeight": "900",
-                "terminal.integrated.fontWeightBold": "900",
-                "workbench.editor.wrapTabs": true
-            }
-        }
-    },
-    // 打开远程连接到container之后默认打开什么目录
-    "workspaceFolder": "/code",
-    // container镜像名称为《文件夹名称》+《service名称》，这里的service名称对应的是docker-compose.yaml文件中的service名称
-    "service": "test-java17",
-    // container启动之后执行的命令
-    "postStartCommand": "sudo chown -R root:root /code",
-    // 以root用户身份登陆此container
-    "remoteUser": "root"
+  "name": "test-java17",
+  "dockerComposeFile": "../docker-compose.yaml",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installGradle": "false",
+      "installMaven": "true"
+    }
+  },
+  "forwardPorts": ["3100:3100", "3101:3101", "3102:3102"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "shengchen.vscode-checkstyle",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-maven",
+        "yangbaopan.vscode-java-ibatisx",
+        "vscjava.vscode-java-dependency",
+        "vmware.vscode-boot-dev-pack",
+        "vmware.vscode-spring-boot",
+        "vscjava.vscode-java-test",
+        "redhat.vscode-xml",
+        "redhat.vscode-yaml",
+        "redhat.fabric8-analytics",
+        "yzhang.markdown-all-in-one",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-mysql",
+        "inferrinizzard.prettier-sql-vscode",
+        "dsznajder.es7-react-js-snippets",
+        "PulkitGangwar.nextjs-snippets",
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "java.server.launchMode": "Standard",
+        "workbench.editor.wrapTabs": true,
+        "terminal.integrated.fontWeight": "900",
+        "terminal.integrated.fontWeightBold": "900",
+        "workbench.editor.wrapTabs": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "notebook.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  // 打开远程连接到container之后默认打开什么目录
+  "workspaceFolder": "/code",
+  // container镜像名称为《文件夹名称》+《service名称》，这里的service名称对应的是docker-compose.yaml文件中的service名称
+  "service": "test-java17",
+  // container启动之后执行的命令
+  "postStartCommand": "sudo chown -R root:root /code",
+  // 以root用户身份登陆此container
+  "remoteUser": "root"
 }

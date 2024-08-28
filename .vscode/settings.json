@@ -1,23 +1,28 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic",
-    "java.server.launchMode": "Standard",
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "sqltools.connections": [
-        {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
-            "previewLimit": 50,
-            "server": "test-mysql",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "test-mysql",
-            "group": "test",
-            "database": "learn_springboot3",
-            "username": "root"
-        }
-    ],
-    "java.debug.settings.onBuildFailureProceed": true,
-    "java.debug.settings.showQualifiedNames": true
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.server.launchMode": "Standard",
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "test-mysql",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "test-mysql",
+      "group": "test",
+      "database": "learn_springboot3",
+      "username": "root"
+    }
+  ],
+  "java.debug.settings.onBuildFailureProceed": true,
+  "java.debug.settings.showQualifiedNames": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "notebook.defaultFormatter": "esbenp.prettier-vscode",
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  }
 }
