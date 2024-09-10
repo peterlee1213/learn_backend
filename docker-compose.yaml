@@ -12,11 +12,11 @@ services:
     working_dir: /code,
     volumes:
       # codebase
-      - /home/zheng/java17:/code
+      - C:/Users/zheng/Desktop/java17:/code
       # m2 repository, so that you don't have to download the dependencies everytime you open the container
-      - /home/zheng/.m2:/root/.m2
+      - C:/Users/zheng/.m2:/root/.m2
       # share git credentials
-      - /home/zheng/.ssh:/root/.ssh
+      - C:/Users/zheng/.ssh:/root/.ssh
 
 networks:
   test-network:

@@ -7,7 +7,7 @@
 5. go to `docker-compose.xml`, find the `volumes` config section, replace the corresponding directory with your local directory
 6. press `F1` and click `Reopen in container`, the vscode will automatically create the container and connect you to the codebase
 
-## how to connect to database 
+## how to connect to database
 
 open `http://localhost:33066` in browser
 
@@ -21,16 +21,16 @@ password: root
 
 # common dependencies summary
 
-+ lombok
-+ spring web
-+ spring data jpa
-+ springgboot devtools
-+ mysql driver
-+ spring security
-+ mybatis
-+ validation 数据校验的依赖
-+ oauth2 Resource Server    //此依赖已经包含了spring security
-+ spring configuration processor
+- lombok
+- spring web
+- spring data jpa
+- springgboot devtools
+- mysql driver
+- spring security
+- mybatis
+- validation 数据校验的依赖
+- oauth2 Resource Server //此依赖已经包含了 spring security
+- spring configuration processor
 
 ```xml
 <!-- swagger -->
@@ -60,6 +60,13 @@ password: root
 ```
 
 ```xml
+<!-- nimbus JOSE + JWT -->
+<!-- 具体版本参照官网 -->
+<dependency>
+    <groupId>com.nimbusds</groupId>
+    <artifactId>nimbus-jose-jwt</artifactId>
+    <version>9.x</version>
+</dependency>
 <!-- jwt -->
 <dependency>
     <groupId>io.jsonwebtoken</groupId>

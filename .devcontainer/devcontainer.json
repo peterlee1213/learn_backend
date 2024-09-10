@@ -1,13 +1,6 @@
 {
   "name": "test-java17",
   "dockerComposeFile": "../docker-compose.yaml",
-  "features": {
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "none",
-      "installGradle": "false",
-      "installMaven": "true"
-    }
-  },
   "forwardPorts": ["3100:3100", "3101:3101", "3102:3102"],
   "customizations": {
     "vscode": {
@@ -36,7 +29,6 @@
       ],
       "settings": {
         "java.server.launchMode": "Standard",
-        "workbench.editor.wrapTabs": true,
         "terminal.integrated.fontWeight": "900",
         "terminal.integrated.fontWeightBold": "900",
         "workbench.editor.wrapTabs": true,

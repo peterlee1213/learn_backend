@@ -32,6 +32,13 @@ public class WebSecurityConfig {
             csrf.disable();
         });
 
+        http.securityContext(context -> context
+                /**
+                 * when requireExplicitSave is true, Spring Security sets up the
+                 * SecurityContextHolderFilter instead of the SecurityContextPersistenceFilter
+                 */
+                .requireExplicitSave(true));
+
         return http.build();
     }
 
