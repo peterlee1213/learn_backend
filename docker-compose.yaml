@@ -15,7 +15,7 @@ services:
       - C:/Users/zheng/Desktop/java17:/code
       # m2 repository, so that you don't have to download the dependencies everytime you open the container
       - C:/Users/zheng/.m2:/root/.m2
-      # share git credentials
+      # credentials
       - C:/Users/zheng/.ssh:/root/.ssh
 
 networks:
